@@ -35,8 +35,7 @@ Este repositorio tiene como objetivo:
 
 Durante el curso se utilizan herramientas como:
 
-- R  
-- Stata  
+- Python
 - Matlab  
 - LaTeX  
 - Excel  
