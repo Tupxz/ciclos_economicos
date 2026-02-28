@@ -248,3 +248,29 @@ latexmkrc
 *.backup
 *.bak
 *.tmp
+
+# =========================
+# macOS
+# =========================
+
+# Archivos del sistema macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*.swo
+*~
+
+# Carpetas de macOS
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Archivos de editor de Mac
+.apdisk
+
+# =========================
+# IMPORTANTE: PDFs SÍ se incluyen en el repo
+# =========================
+!*.pdf
+
