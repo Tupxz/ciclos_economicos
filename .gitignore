@@ -268,9 +268,10 @@ latexmkrc
 
 # Archivos de editor de Mac
 .apdisk
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
 
 # =========================
 # IMPORTANTE: PDFs SÍ se incluyen en el repo
 # =========================
 !*.pdf
-
