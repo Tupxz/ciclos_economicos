@@ -303,3 +303,80 @@ def validate_dataset(df: pd.DataFrame) -> None:
         raise ValueError(
             "Dataset contains duplicate dates. All dates must be unique."
         )
+
+
+def save_dataset(df: pd.DataFrame, processed_dir: Path, stem: str = "dataset_taller") -> tuple:
+    """
+    Save the processed macroeconomic dataset to both XLSX and CSV formats.
+    
+    Creates both Excel and CSV versions of the dataset for portability and
+    reproducibility. The Excel file preserves formatting and is suitable for
+    manual inspection; the CSV is suitable for data pipelines and version control.
+    The date column is exported without time component (date-only format).
+    
+    Args:
+        df (pd.DataFrame): The dataset to save (output of build_dataset).
+        processed_dir (Path): Output directory where files will be saved.
+        stem (str): Base filename without extension (default: "dataset_taller").
+        
+    Returns:
+        tuple: Two-element tuple containing (xlsx_path, csv_path) as Path objects.
+        
+    Raises:
+        ValueError: If the DataFrame does not pass validation.
+    """
+    # Validate dataset before saving
+    validate_dataset(df)
+    
+    # Create export copy and convert date to date-only format (no time component)
+    df_export = df.copy()
+    df_export["date"] = pd.to_datetime(df_export["date"]).dt.date
+    
+    # Ensure output directory exists
+    processed_dir = Path(processed_dir)
+    processed_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Define output paths
+    xlsx_path = processed_dir / f"{stem}.xlsx"
+    csv_path = processed_dir / f"{stem}.csv"
+    
+    # Save to Excel (with index=False to avoid duplication)
+    df_export.to_excel(xlsx_path, index=False, engine="openpyxl")
+    
+    # Save to CSV (with index=False for consistency)
+    df_export.to_csv(csv_path, index=False)
+    
+    return (xlsx_path, csv_path)
+
+
+if __name__ == "__main__":
+    import sys
+    
+    # Default paths
+    default_raw_dir = Path("data/raw")
+    default_processed_dir = Path("data/processed")
+    
+    # Parse command line arguments if provided
+    if len(sys.argv) >= 3:
+        raw_dir = Path(sys.argv[1])
+        processed_dir = Path(sys.argv[2])
+    else:
+        raw_dir = default_raw_dir
+        processed_dir = default_processed_dir
+    
+    # Build dataset from FRED files
+    try:
+        df = build_dataset(raw_dir)
+        print(f"✓ Dataset built: {len(df)} rows × {len(df.columns)} columns")
+    except Exception as e:
+        print(f"✗ Error building dataset: {e}")
+        sys.exit(1)
+    
+    # Save dataset to both formats
+    try:
+        xlsx_path, csv_path = save_dataset(df, processed_dir)
+        print(f"✓ Saved to {xlsx_path}")
+        print(f"✓ Saved to {csv_path}")
+    except Exception as e:
+        print(f"✗ Error saving dataset: {e}")
+        sys.exit(1)
