@@ -57,14 +57,6 @@
     ul{margin:10px 0 0;padding-left:18px}
     li{margin:6px 0;color:var(--muted)}
     .small{font-size:13px;color:var(--muted)}
-    .footer{
-      margin-top:18px;
-      padding:14px 18px;
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      background:rgba(255,255,255,.02);
-      color:var(--muted);
-    }
     code{
       background:rgba(255,255,255,.06);
       border:1px solid var(--border);
@@ -81,7 +73,7 @@
       <h1>Taller 1 — Macroeconomía 3: Ciclos Económicos</h1>
       <p class="sub">
         Repositorio y entregables del taller: exploración descriptiva, filtro Hodrick–Prescott (manual y con <em>statsmodels</em>),
-        hechos estilizados, correlaciones móviles y análisis insumo-producto (I-O).
+        hechos estilizados, correlaciones móviles y análisis insumo-producto (I–O).
       </p>
 
       <div class="badges">
@@ -99,31 +91,27 @@
         <ul>
           <li><a href="outputs/exports/entrega_taller_1.xlsx">Excel final (entrega_taller_1.xlsx)</a></li>
 
-          <!-- Ajusta estos nombres a los tuyos en site/reportes/ -->
           <li><a href="reportes/Taller_1_con_codigo.html">Reporte HTML (con código)</a></li>
           <li><a href="reportes/Taller_1_sin_codigo.html">Reporte HTML (sin código)</a></li>
 
-          <li><a href="reportes/Taller_1_con_codigo.pdf">PDF (con código)</a></li>
-          <li><a href="reportes/Taller_1_sin_codigo.pdf">PDF (sin código)</a></li>
+          <li><a href="reportes/Taller_1_con_codigo.pdf">Reporte PDF (con código)</a></li>
+          <li><a href="reportes/Taller_1_sin_codigo.pdf">Reporte PDF (sin código)</a></li>
         </ul>
-        <p class="small" style="margin-top:10px">
-          Nota: si un link da 404, revisa que el archivo exista con ese nombre dentro de <code>site/reportes/</code>.
-        </p>
       </section>
 
       <section class="card">
         <h2>Notebook y scripts</h2>
         <p>Material reproducible: notebook, módulos y pipeline.</p>
         <ul>
-          <li><a href="../notebooks/Taller_1.ipynb">Notebook (Taller_1.ipynb) — en el repo</a></li>
-          <li><a href="../src/">Carpeta de código (src/) — en el repo</a></li>
+          <li><a href="../notebooks/Taller_1.ipynb">Notebook (Taller_1.ipynb)</a></li>
+          <li><a href="../src/">Código (src/)</a></li>
           <li><a href="../src/data_prep.py">Pipeline de datos (data_prep.py)</a></li>
           <li><a href="../src/hp_filter.py">HP manual (hp_filter.py)</a></li>
           <li><a href="../src/cycle_stats.py">Hechos estilizados (cycle_stats.py)</a></li>
-          <li><a href="../src/io_tools.py">I-O tools (io_tools.py)</a></li>
+          <li><a href="../src/io_tools.py">I–O tools (io_tools.py)</a></li>
         </ul>
         <p class="small" style="margin-top:10px">
-          Estos links apuntan al repositorio (no al site estático).
+          Enlaces al repositorio del proyecto.
         </p>
       </section>
 
@@ -133,29 +121,18 @@
         <ul>
           <li><a href="outputs/figures/index.html">Figuras (outputs/figures/)</a></li>
           <li><a href="outputs/tables/index.html">Tablas (outputs/tables/)</a></li>
-          <li><a href="outputs/exports/index.html">Exports (outputs/exports/)</a></li>
         </ul>
-        <p class="small" style="margin-top:10px">
-          Recomendado: crear un <code>index.html</code> dentro de cada carpeta para navegación limpia.
-        </p>
       </section>
 
       <section class="card">
         <h2>Documentación</h2>
-        <p>Archivos de soporte y referencias del repositorio.</p>
+        <p>Referencias del repositorio.</p>
         <ul>
           <li><a href="../README.md">README.md</a></li>
           <li><a href="../requirements.txt">requirements.txt</a></li>
           <li><a href="../outputs/">outputs/ (carpeta en el repo)</a></li>
         </ul>
-        <p class="small" style="margin-top:10px">
-          Si no quieres enlazar <code>docs/</code>, simplemente no se incluye aquí.
-        </p>
       </section>
-    </div>
-
-    <div class="footer">
-      <div><strong>Tip:</strong> Este sitio es estático (GitHub Pages). Para que carpetas abran “bonito”, crea <code>index.html</code> en cada carpeta.</div>
     </div>
   </div>
 </body>
