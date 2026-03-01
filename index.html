@@ -1,1 +1,28 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <title>Redirigiendo…</title>
+
+    <!-- Redirect inmediato -->
+    <meta http-equiv="refresh" content="0; url=site/" />
+
+    <!-- Canonical (opcional) -->
+    <link rel="canonical" href="site/" />
+  </head>
+
+  <body>
+    <p>Redirigiendo a la página principal…</p>
+    <p>
+      Si no redirige automáticamente, entra aquí:
+      <a href="site/">Abrir sitio</a>.
+    </p>
+
+    <!-- Fallback JS (por si el meta refresh está bloqueado) -->
+    <script>
+      window.location.replace("site/");
+    </script>
+  </body>
+</html>
