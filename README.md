@@ -86,8 +86,8 @@ Abrir y ejecutar:
 ### Sobre mí
 
 Santiago Tupaz
-Estudiante de Economía – EAFIT
-Estudiante de Estadística – Universidad Nacional de Colombia
+- Estudiante de Economía – EAFIT
+- Estudiante de Estadística – Universidad Nacional de Colombia
 
 linkedin: https://www.linkedin.com/in/santiago-tupaz-ram%C3%ADrez-2b87082b3/
 
