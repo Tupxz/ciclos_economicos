@@ -152,7 +152,7 @@ venv.bak/
 .ropeproject
 
 # mkdocs documentation
-/site
+# /site  # Desactivado: site/ contiene la página web del proyecto (GitHub Pages)
 
 # mypy
 .mypy_cache/
