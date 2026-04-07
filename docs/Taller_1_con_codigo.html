@@ -8713,7 +8713,6 @@ Tablas (outputs/tables/):
   • correlaciones_hp.xlsx
   • correlaciones_moviles_hp.csv
   • correlaciones_moviles_hp.xlsx
-  • cross_correlations_hp.xlsx
   • descriptivas.csv
   • descriptivas.xlsx
   • gdp_var_negativa.csv
@@ -8740,7 +8739,6 @@ Gráficos (outputs/figures/):
   • 13_hp_gaps_statsmodels.png
   • 14_rolling_corr.png
   • 15_io_scatter_direct.png
-  • 16_cross_correlations.png
 
 ✓ Notebook completado exitosamente.
 </pre>
@@ -10072,7 +10070,7 @@ Guardado: outputs/tables/correlaciones_moviles_hp.csv
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -10357,7 +10355,7 @@ Guardado: outputs/tables/cross_correlations_hp.xlsx
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -10451,8 +10449,8 @@ Guardado: outputs/tables/cross_correlations_hp.xlsx
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="3.6-Interpretaci%C3%B3n-(hechos-estilizados)">3.6 Interpretación (hechos estilizados)<a class="anchor-link" href="#3.6-Interpretaci%C3%B3n-(hechos-estilizados)">¶</a></h2><p>La tabla de volatilidad muestra que la <strong>amplitud cíclica</strong> (desviación estándar de la brecha HP) difiere sustancialmente entre variables. En particular, la <strong>inversión</strong> presenta una volatilidad claramente superior a la del PIB: su volatilidad relativa es <strong>≈ 4.10×</strong> (std ≈ 0.0616 vs 0.0150 en PIB), consistente con el hecho estilizado de que la inversión <strong>amplifica</strong> el ciclo. En contraste, <strong>consumo</strong> es menos volátil que el PIB (≈ 0.88×). En variables en tasa, las brechas aparecen con volatilidad relativa alta (<strong>desempleo ≈ 11.10×</strong>, <strong>inflación ≈ 26.20×</strong>, <strong>fed funds ≈ 36.04×</strong>); esto debe interpretarse con cautela, porque en estas series el HP puede capturar no solo fluctuaciones cíclicas sino también <strong>cambios de régimen</strong> en el nivel/tendencia.</p>
 <p>En correlaciones contemporáneas con la brecha del PIB, <strong>consumo</strong> e <strong>inversión</strong> resultan claramente <strong>procíclicos</strong> (corr ≈ <strong>0.881</strong> y <strong>0.889</strong>, respectivamente), mientras que <strong>desempleo</strong> es <strong>contracíclico</strong> (corr ≈ <strong>−0.799</strong>). Este patrón es coherente con la lectura estándar del mercado laboral: cuando el producto está por debajo de tendencia, el desempleo tiende a ubicarse por encima de su nivel tendencial. En cambio, <strong>inflación</strong> y <strong>fed funds</strong> presentan correlaciones contemporáneas positivas pero moderadas (≈ <strong>0.222</strong> y <strong>0.310</strong>), sugiriendo una relación menos estable/intensa con el ciclo medido por la brecha del PIB.</p>
-<p>Las correlaciones cruzadas (seccion 3.5) complementan este analisis al identificar el <strong>desfase temporal</strong> optimo entre cada variable y el PIB, permitiendo clasificar cada serie como lider, coincidente o rezagada respecto al ciclo.</p>
-<p>Finalmente, las correlaciones móviles (ventana de <strong>40 trimestres ≈ 10 años</strong>) permiten evaluar la estabilidad temporal de estos co-movimientos. El gráfico sugiere que el co-movimiento procíclico de <strong>consumo</strong> e <strong>inversión</strong> con el PIB es alto y relativamente estable en la mayor parte de la muestra (promedios móviles ≈ <strong>0.884</strong> y <strong>0.901</strong>), mientras que el <strong>desempleo</strong> permanece fuertemente contracíclico (promedio móvil ≈ <strong>−0.871</strong>). En contraste, <strong>inflación</strong> y <strong>fed funds</strong> exhiben mayor variación: la correlación móvil de inflación incluso cambia de signo en algunos tramos (p. ej., cae por debajo de cero alrededor de 2020), lo cual es consistente con que la relación entre inflación, política monetaria y ciclo depende del régimen macroeconómico. Estas correlaciones describen asociación dinámica y <strong>no</strong> deben interpretarse como causalidad.</p>
+<p>El análisis de correlaciones cruzadas (sección 3.5) constituye el resultado central de esta fase, ya que permite identificar el <strong>desfase temporal</strong> óptimo ($k^*$) entre cada variable y el PIB. Los resultados muestran que <strong>consumo</strong>, <strong>inversión</strong>, <strong>desempleo</strong> e <strong>inflación</strong> son <strong>coincidentes</strong> ($k^* = 0$), mientras que <strong>Fed Funds</strong> es la única variable <strong>rezagada</strong> ($k^* = 1$), consistente con la función de reacción de la política monetaria ante el ciclo observado.</p>
+<p>Adicionalmente, las correlaciones móviles (ventana de <strong>40 trimestres ≈ 10 años</strong>) permiten evaluar la estabilidad temporal de estos co-movimientos. El gráfico sugiere que el co-movimiento procíclico de <strong>consumo</strong> e <strong>inversión</strong> con el PIB es alto y relativamente estable en la mayor parte de la muestra (promedios móviles ≈ <strong>0.884</strong> y <strong>0.901</strong>), mientras que el <strong>desempleo</strong> permanece fuertemente contracíclico (promedio móvil ≈ <strong>−0.871</strong>). En contraste, <strong>inflación</strong> y <strong>fed funds</strong> exhiben mayor variación: la correlación móvil de inflación incluso cambia de signo en algunos tramos (p. ej., cae por debajo de cero alrededor de 2020), lo cual es consistente con que la relación entre inflación, política monetaria y ciclo depende del régimen macroeconómico. Estas correlaciones describen asociación dinámica y <strong>no</strong> deben interpretarse como causalidad.</p>
 </div>
 </div>
 </div>
@@ -10472,7 +10470,7 @@ Guardado: outputs/tables/cross_correlations_hp.xlsx
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
@@ -10539,7 +10537,7 @@ Primeros 5: ['S1_Agro', 'S2_Minas', 'S3_Alimentos', 'S4_Textiles', 'S5_Madera']
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Eslabonamientos directos</span>
@@ -10748,7 +10746,7 @@ Primeros 5: ['S1_Agro', 'S2_Minas', 'S3_Alimentos', 'S4_Textiles', 'S5_Madera']
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Eslabonamientos totales (directos + indirectos)</span>
@@ -10957,7 +10955,7 @@ Primeros 5: ['S1_Agro', 'S2_Minas', 'S3_Alimentos', 'S4_Textiles', 'S5_Madera']
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Eslabonamientos indirectos puros (L - I)</span>
@@ -11157,7 +11155,7 @@ Primeros 5: ['S1_Agro', 'S2_Minas', 'S3_Alimentos', 'S4_Textiles', 'S5_Madera']
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Guardar resultados a Excel</span>
@@ -11245,7 +11243,7 @@ Un shock adverso de oferta (p. ej., restricción energética o cuello logístico
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -11421,7 +11419,7 @@ La posición alta en forward y relativamente alta en backward sugiere un rol de 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Construir Excel final de entrega: entrega_taller_1.xlsx</span>
@@ -11521,7 +11519,7 @@ La posición alta en forward y relativamente alta en backward sugiere un rol de 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Verificacion final: confirmar que todos los archivos existen</span>
@@ -11606,16 +11604,15 @@ Figuras (PNG):
   [OK] outputs/figures/13_hp_gaps_statsmodels.png
   [OK] outputs/figures/14_rolling_corr.png
   [OK] outputs/figures/15_io_scatter_direct.png
-  [OK] outputs/figures/16_cross_correlations.png
 
-Total de PNG: 16 (esperados: 15)
+Total de PNG: 15 (esperados: 15)
 
 ======================================================================
 CHECKLIST FINAL:
 ======================================================================
   [✓] entrega_taller_1.xlsx creado
   [✓] io_linkages.xlsx existe
-  [✗] 15 PNG generadas (01-15)
+  [✓] 15 PNG generadas (01-15)
 ======================================================================
 </pre>
 </div>
